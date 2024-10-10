@@ -13,10 +13,32 @@
           <p>
             <b class="messageText"><%= msg.text %></b>
             <br>
-            <i class="messageInfo"><%= msg.user %> | <%= msg.added %></i>
+            <i class="messageInfo">
+              <span>
+                <%= msg.user %>
+              </span>
+              |
+              <span class="msgDate">
+                <%= msg.added.toISOString() %>
+              </span>
+            </i>
           </p>
         </li>
       <% }); %>
-    </ul>  
+    </ul>
+
+    <script>
+      // Change messages dates from UTC to client's local time
+      onload = () => {
+        const allMsgsDateElements = document.querySelectorAll(".msgDate");
+
+        allMsgsDateElements.forEach(dateElement => {
+          const userLocalDate = 
+            new Date(dateElement.textContent.trim()).toLocaleString();
+
+          dateElement.textContent = userLocalDate;
+        })
+      }
+    </script>
   </body>
 </html>

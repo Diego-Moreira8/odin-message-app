@@ -12,7 +12,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 // Set up Helmet
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: false }));
 // Set up logger
 app.use(morgan("dev"));
 // To get data from forms
