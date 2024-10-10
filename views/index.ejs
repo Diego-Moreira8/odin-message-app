@@ -1,13 +1,22 @@
-<a href="/new">Nova mensagem</a>
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <%- include("head") %>
 
-<ul>
-  <% messages.forEach(msg => { %>
-    <li>
-      <p>
-        <b><%= msg.text %></b>
-        <br>
-        <%= msg.user %> | <%= msg.added %>
-      </p>
-    </li>
-  <% }); %>
-</ul>
+  <body>
+    <h1>Todas as Mensagens</h1>
+
+    <a href="/new" class="linkAsAButton">Nova mensagem</a>
+
+    <ul class="messagesList">
+      <% messages.forEach(msg => { %>
+        <li class="messageContent">
+          <p>
+            <b class="messageText"><%= msg.text %></b>
+            <br>
+            <i class="messageInfo"><%= msg.user %> | <%= msg.added %></i>
+          </p>
+        </li>
+      <% }); %>
+    </ul>  
+  </body>
+</html>

@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: sans-serif;
+}
+
+html {
+  background-color: white;
+}
+
+body {
+  height: 100dvh;
+  background-color: #f9f9f9;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+button,
+a.linkAsAButton {
+  display: inline-block;
+  background-color: white;
+
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+}
+
+button[type="submit"] {
+  background-color: green;
+  border: 1px solid green;
+  color: white;
+}
+
+input,
+textarea {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.messagesList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.messageContent {
+  background-color: white;
+  margin: 1rem 0;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.messageInfo {
+  font-size: 0.75rem;
+}
+
+.newMessageForm {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+}
+
+.formRow {
+  display: flex;
+  flex-flow: column;
+  gap: 0.5rem;
+}

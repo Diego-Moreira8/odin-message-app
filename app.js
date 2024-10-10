@@ -17,6 +17,8 @@ app.use(helmet());
 app.use(morgan("dev"));
 // To get data from forms
 app.use(express.urlencoded({ extended: true }));
+// Static files
+app.use(express.static(path.join(__dirname, "public")));
 
 // Add routes
 app.use("/", indexRouter);
