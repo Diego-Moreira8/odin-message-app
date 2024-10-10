@@ -1,0 +1,13 @@
+<a href="/new">Nova mensagem</a>
+
+<ul>
+  <% messages.forEach(msg => { %>
+    <li>
+      <p>
+        <b><%= msg.text %></b>
+        <br>
+        <%= msg.user %> | <%= msg.added %>
+      </p>
+    </li>
+  <% }); %>
+</ul>
