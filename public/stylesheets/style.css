@@ -11,11 +11,12 @@ html {
 }
 
 body {
-  height: 100dvh;
+  min-height: 100dvh;
   background-color: #f9f9f9;
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
+  overflow-y: scroll;
 }
 
 button,
@@ -60,6 +61,10 @@ textarea {
   border: 1px solid lightgray;
   border-radius: 0.5rem;
   padding: 1rem;
+}
+
+.messageContent p {
+  margin: 0;
 }
 
 .messageInfo {
