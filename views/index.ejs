@@ -8,18 +8,18 @@
     <a href="/new" class="linkAsAButton">Nova mensagem</a>
 
     <ul class="messagesList">
-      <% messages.forEach(msg => { %>
+      <% allMessages.forEach(msg => { %>
         <li class="messageContent">
           <p>
             <b class="messageText"><%= msg.text %></b>
             <br>
             <i class="messageInfo">
               <span>
-                <%= msg.user %>
+                <%= msg.username %>
               </span>
               |
               <span class="msgDate">
-                <%= msg.added.toISOString() %>
+                <%= msg.created_at.toISOString() %>
               </span>
             </i>
           </p>
