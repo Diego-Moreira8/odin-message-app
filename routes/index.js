@@ -8,10 +8,20 @@ indexRouter.get("/", async (req, res, next) => {
   res.render("index", { allMessages: result });
 });
 
-indexRouter.get("/new", (req, res, next) => res.render("newMsg"));
+indexRouter.get("/new", (req, res, next) => {
+  res.render("newMsg", { authenticationError: false });
+});
 
 indexRouter.post("/new", async (req, res, next) => {
-  await db.newMessage(req.body.text);
+  const { authOption, user, password, text } = req.body;
+  const authenticated = await db.authenticate(user, password);
+
+  if (!authenticated) {
+    res.render("newMsg", { authenticationError: true });
+    return;
+  }
+
+  await db.newMessage(text);
   res.redirect("/");
 });
 

@@ -11,6 +11,18 @@ async function getMessages() {
   return rows;
 }
 
+async function authenticate(username, password) {
+  const { rows } = await pool.query(
+    `
+      SELECT * FROM users
+      WHERE username = $1 AND password = $2;
+    `,
+    [username, password]
+  );
+
+  return rows.length > 0;
+}
+
 async function newMessage(text) {
   await pool.query(
     `
@@ -23,5 +35,6 @@ async function newMessage(text) {
 
 module.exports = {
   getMessages,
+  authenticate,
   newMessage,
 };

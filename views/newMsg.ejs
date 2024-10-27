@@ -5,15 +5,32 @@
   <body>
     <h1>Nova Mensagem</h1>
 
+    <% if (authenticationError) { %>
+      <p>Nome de usuário ou senha incorreto.</p>
+    <% } %>
+
     <form action="/new" method="post" class="newMessageForm">
+      <fieldset>
+        <input type="radio" name="authOption" id="login" value="login" checked>
+        <label for="login">Já tenho um cadastro</label>
+        
+        <input type="radio" name="authOption" id="signup" value="signup">
+        <label for="signup">Criar uma conta</label>
+      </fieldset>
+
       <div class="formRow">
-        <label for="text">Digite aqui sua mensagem:</label>
-        <textarea name="text" id="text"></textarea>
+        <label for="user">Nome de usuário:</label>
+        <input type="text" name="user" id="user" max="16">
       </div>
 
       <div class="formRow">
-        <label for="user">Digite aqui o seu nome de usuário:</label>
-        <input type="text" name="user" id="user" max="16">
+        <label for="password">Senha:</label>
+        <input type="password" name="password" id="password">
+      </div>
+
+      <div class="formRow">
+        <label for="text">Digite aqui sua mensagem:</label>
+        <textarea name="text" id="text"></textarea>
       </div>
 
       <div class="formRow">

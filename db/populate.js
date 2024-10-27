@@ -6,7 +6,8 @@ const { Client } = require("pg");
 const SQL = `
 CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
-  username TEXT
+  username TEXT,
+  password TEXT
 );
 
 CREATE TABLE IF NOT EXISTS messages (
@@ -19,7 +20,8 @@ CREATE TABLE IF NOT EXISTS messages (
 DO $$
 BEGIN
   IF NOT EXISTS (SELECT 1 FROM users WHERE username = 'Dev') THEN
-    INSERT INTO users (username) VALUES ('Dev');
+    INSERT INTO users (username, password) VALUES 
+      ('Dev', '${process.env.DEV_PASSWORD}');
   END IF;
 END $$;
 
