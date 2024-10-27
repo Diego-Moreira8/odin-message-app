@@ -6,7 +6,7 @@
     <h1>Nova Mensagem</h1>
 
     <% if (authenticationError) { %>
-      <p>Nome de usuário ou senha incorreto.</p>
+      <p>Erro de autenticação.</p>
     <% } %>
 
     <form action="/new" method="post" class="newMessageForm">
@@ -20,12 +20,12 @@
 
       <div class="formRow">
         <label for="user">Nome de usuário:</label>
-        <input type="text" name="user" id="user" max="16">
+        <input type="text" name="user" id="user" maxlength="16" required>
       </div>
 
       <div class="formRow">
         <label for="password">Senha:</label>
-        <input type="password" name="password" id="password">
+        <input type="password" name="password" id="password" maxlength="16" required>
       </div>
 
       <div class="formRow">

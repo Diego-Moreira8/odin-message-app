@@ -6,7 +6,7 @@ const { Client } = require("pg");
 const SQL = `
 CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
-  username TEXT,
+  username TEXT UNIQUE,
   password TEXT
 );
 

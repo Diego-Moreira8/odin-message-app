@@ -6,6 +6,7 @@ async function getMessages() {
     FROM messages AS m
     INNER JOIN users AS u
     ON m.user_id = u.id
+    ORDER BY created_at DESC
   `);
 
   return rows;
@@ -23,18 +24,29 @@ async function authenticate(username, password) {
   return rows.length > 0;
 }
 
-async function newMessage(text) {
+async function signUpUser(username, password) {
   await pool.query(
     `
-      INSERT INTO messages (user_id, text) VALUES
-        ((SELECT id FROM users WHERE username = 'Dev'), $1)
+      INSERT INTO users (username, password)
+      VALUES ($1, $2)
     `,
-    [text]
+    [username, password]
+  );
+}
+
+async function newMessage(user, text) {
+  await pool.query(
+    `
+      INSERT INTO messages (user_id, text) 
+      VALUES ((SELECT id FROM users WHERE username = $1), $2)
+    `,
+    [user, text]
   );
 }
 
 module.exports = {
   getMessages,
   authenticate,
+  signUpUser,
   newMessage,
 };

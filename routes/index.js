@@ -14,6 +14,9 @@ indexRouter.get("/new", (req, res, next) => {
 
 indexRouter.post("/new", async (req, res, next) => {
   const { authOption, user, password, text } = req.body;
+
+  if (authOption === "signup") await db.signUpUser(user, password);
+
   const authenticated = await db.authenticate(user, password);
 
   if (!authenticated) {
@@ -21,7 +24,7 @@ indexRouter.post("/new", async (req, res, next) => {
     return;
   }
 
-  await db.newMessage(text);
+  await db.newMessage(user, text);
   res.redirect("/");
 });
 
