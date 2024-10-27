@@ -10,8 +10,8 @@ indexRouter.get("/", async (req, res, next) => {
 
 indexRouter.get("/new", (req, res, next) => res.render("newMsg"));
 
-indexRouter.post("/new", (req, res, next) => {
-  messages.push({ ...req.body, added: new Date() });
+indexRouter.post("/new", async (req, res, next) => {
+  await db.newMessage(req.body.text);
   res.redirect("/");
 });
 

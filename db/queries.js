@@ -7,9 +7,21 @@ async function getMessages() {
     INNER JOIN users AS u
     ON m.user_id = u.id
   `);
+
   return rows;
+}
+
+async function newMessage(text) {
+  await pool.query(
+    `
+      INSERT INTO messages (user_id, text) VALUES
+        ((SELECT id FROM users WHERE username = 'Dev'), $1)
+    `,
+    [text]
+  );
 }
 
 module.exports = {
   getMessages,
+  newMessage,
 };
